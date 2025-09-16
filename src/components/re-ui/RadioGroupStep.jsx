@@ -1,26 +1,25 @@
-import React from "react";
-import Button from "../../re-ui/Button";
+import Button from "./Button";
 
-const options = [
-  // options for Company Role
-  "Individual Contributor",
-  "Manager of Small Team",
-  "Manager of Large Team",
-  "Director or VP",
-  "CEO or Executive",
-];
-
-export default function CompanyRole({ value, onChange, onNext,onPrev }) {
+export default function RadioGroupStep({
+  title,
+  subtitle,
+  options,
+  name,
+  value,
+  onChange,
+  onNext,
+  onPrev,
+  showPrev = true,
+  nextLabel = "Next",
+  prevLabel = "Back",
+}) {
   return (
     <>
       <h2 className="font-display text-[#5072DF] mb-4 text-3xl/tight font-semibold tracking-tight text-balance sm:text-[32px]">
-        Get started with Quantum OS!
+        {title}
       </h2>
-      <h3 className="mb-4 text-lg font-semibold">
-        What is your role in the company?
-      </h3>
-      <div className="flex mb-4 flex-col space-y-2">
-        {/* options are mapped here */}
+      <h3 className="mb-4 text-lg font-semibold">{subtitle}</h3>
+      <div className="flex mb-4 flex-col space-y-2 capitalize">
         {options.map((opt) => (
           <label
             key={opt}
@@ -28,7 +27,7 @@ export default function CompanyRole({ value, onChange, onNext,onPrev }) {
           >
             <input
               type="radio"
-              name="companyRole"
+              name={name}
               value={opt}
               checked={value === opt}
               onChange={onChange}
@@ -38,19 +37,16 @@ export default function CompanyRole({ value, onChange, onNext,onPrev }) {
           </label>
         ))}
       </div>
-      {/* button for next */}
       <div className="flex justify-between">
-        <Button
-          variant="secondary"
-          onClick={onPrev}
-        >
-          Back
-        </Button>
+        {showPrev && (
+          <Button variant="secondary" onClick={onPrev}>
+            {prevLabel}
+          </Button>
+        )}
         <Button onClick={onNext} variant="primary" disabled={!value}>
-          Next
+          {nextLabel}
         </Button>
       </div>
-     
     </>
   );
 }
