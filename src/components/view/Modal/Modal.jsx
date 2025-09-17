@@ -162,9 +162,7 @@ export default function Modal({ isOpen, onClose }) {
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.3 }}
             >
-              <Suspense fallback={<div>Loading...</div>}>
-                <SignUpPage onLogin={handleLoginSuccess} />
-              </Suspense>
+              <SignUpPage onLogin={handleLoginSuccess} />
             </motion.div>
           ) : (
             <>
