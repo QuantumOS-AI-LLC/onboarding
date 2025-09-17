@@ -27,9 +27,6 @@ const ROLE_OPTIONS = [
   "Director or VP",
   "Marketing Manager",
   "Sales Manager",
-  "Manager Of Large Team",
-  "Manager Of Small Team",
-  "Individual Contributor",
 ];
 
 const CHALLENGE_OPTIONS = [
