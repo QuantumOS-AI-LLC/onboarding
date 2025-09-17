@@ -172,7 +172,9 @@ export default function Modal({ isOpen, onClose }) {
             </motion.div>
           ) : (
             <>
-              <Stepper step={step} totalSteps={totalSteps} />
+              <div className="mt-6 lg:mt-0">
+                <Stepper step={step} totalSteps={totalSteps} />
+              </div>
               <motion.div
                 key={step}
                 initial={{ opacity: 0, x: 40 }}
