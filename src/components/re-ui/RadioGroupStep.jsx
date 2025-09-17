@@ -9,6 +9,7 @@ export default function RadioGroupStep({
   onChange,
   onNext,
   onPrev,
+  type = "radio", // radio or checkbox
   showPrev = true,
   nextLabel = "Next",
   prevLabel = "Back",
@@ -19,31 +20,47 @@ export default function RadioGroupStep({
         {title}
       </h2>
       <h3 className="mb-4 text-lg font-semibold">{subtitle}</h3>
+
       <div className="flex mb-4 flex-col space-y-2 capitalize">
         {options.map((opt) => (
           <label
             key={opt}
-            className="mr-4 has-checked:ring-[#5072DF] hover:ring-[#dbdbdb] hover:has-checked:ring-primary to-primary-light from-white has-checked:bg-gradient-to-b flex cursor-pointer flex-row items-center gap-2 rounded-md bg-white px-3 py-2 ring-1 ring-[#f1f1f1] has-checked:ring-2"
+            className={`
+              flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 ring-1
+              ${
+                type === "radio"
+                  ? "bg-white ring-[#f1f1f1] has-checked:ring-2 has-checked:ring-[#5072DF]"
+                  : value.includes(opt)
+                  ? "bg-gradient-to-b from-[#E0EBFF] to-[#C6DBFF] ring-2 ring-[#5072DF]"
+                  : "bg-white ring-[#f1f1f1]"
+              }
+              hover:ring-[#dbdbdb] transition-all
+            `}
           >
             <input
-              type="radio"
+              type={type === "radio" ? "radio" : "checkbox"}
               name={name}
               value={opt}
-              checked={value === opt}
+              checked={type === "radio" ? value === opt : value.includes(opt)}
               onChange={onChange}
-              className="mr-1"
+              className="hidden"
             />
-            {opt}
+            <span className="flex-1">{opt}</span>
           </label>
         ))}
       </div>
+
       <div className="flex justify-between">
         {showPrev && (
           <Button variant="secondary" onClick={onPrev}>
             {prevLabel}
           </Button>
         )}
-        <Button onClick={onNext} variant="primary" disabled={!value}>
+        <Button
+          onClick={onNext}
+          variant="primary"
+          disabled={type === "radio" ? !value : value.length === 0}
+        >
           {nextLabel}
         </Button>
       </div>
