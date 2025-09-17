@@ -5,13 +5,11 @@ import {
   useEffect,
   useMemo,
   useCallback,
-  lazy,
-  Suspense,
 } from "react";
 import Stepper from "../../re-ui/Stepper/Stepper";
 import RadioGroupStep from "../../re-ui/RadioGroupStep";
+import SignUpPage from "../SignUp/SignUpPage";
 
-const SignUpPage = lazy(() => import("../SignUp/SignUpPage"));
 
 const EMPLOYEE_OPTIONS = [
   "Just me",
