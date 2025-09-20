@@ -63,7 +63,7 @@ export default function AiEmployees({ form, handleChange, handleNext }) {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full my-4">
       <h2 className="text-2xl font-bold mb-4">
         Finally, let’s set up your AI Employees!
       </h2>
@@ -72,12 +72,12 @@ export default function AiEmployees({ form, handleChange, handleNext }) {
         you can focus on creative and meaningful work!
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4 max-w-4xl w-full h-[400px]">
+      <div className="flex flex-wrap justify-center gap-4 max-w-4xl w-full h-full">
         {employees.map((emp) => (
           <div
             key={emp.id}
             onClick={() => toggleSelect(emp)}
-            className={`flex flex-col items-center p-4 rounded-xl border cursor-pointer transition w-full md:w-[190px] bg-gradient-to-b
+            className={`flex flex-col items-center p-4 rounded-xl border cursor-pointer transition w-[180px] md:w-[190px] h-[200px] bg-gradient-to-b
               ${
                 selected.includes(emp.name)
                   ? "bg-gradient-to-b from-blue-100 to-blue-300 border-blue-500 shadow-md"

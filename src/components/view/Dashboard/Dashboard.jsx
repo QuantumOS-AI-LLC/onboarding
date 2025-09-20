@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import Navbar from "../../shared/Navbar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Button from "../../re-ui/Button";
 
-const WEBHOOK_URL = "https://n8n.quantumos.ai/webhook/onboarding_data/ujerhue";
+const WEBHOOK_URL = "https://n8n.quantumos.ai/webhook/onboarding_data";
 
 export default function Dashboard() {
   const [selected, setSelected] = useState(new Date());
@@ -113,8 +112,6 @@ export default function Dashboard() {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex flex-col">
-      <Navbar />
-
       <div className="flex flex-col lg:flex-row justify-center items-center w-full mx-auto mt-10 mb-20 gap-10 max-w-[1440px] px-4">
         {/* Form Card */}
         <div className="w-full lg:w-1/2 bg-white rounded-3xl shadow-lg p-6 md:p-10">
